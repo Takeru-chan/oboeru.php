@@ -21,7 +21,6 @@ if ($dir != "") {
   $min = $_GET["min"];
   $max = $_GET["max"];
   $curr = $_GET["curr"];
-  if ($curr < 0) {$rnd = "yes";}
   $curr - 1 < $min ? $prev = $max : $prev = $curr - 1 ;
   $curr + 1 > $max ? $next = $min : $next = $curr + 1 ;
   $line = @file(__DIR__ . "/${dir}/data.${curr}", FILE_IGNORE_NEW_LINES);
