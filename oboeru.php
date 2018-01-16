@@ -16,21 +16,14 @@
 </head><body>
 <h1><a href='./oboeru.php'>おぼえるくん-α</a></h1>
 <?php
-$rnd = "no:";
 $dir = $_GET["dir"];
 if ($dir != "") {
   $min = $_GET["min"];
   $max = $_GET["max"];
   $curr = $_GET["curr"];
-	if ($curr < 0) {$rnd = "yes";}
-	if ($rnd == "no") {
-		$curr - 1 < $min ? $prev = $max : $prev = $curr - 1 ;
-		$curr + 1 > $max ? $next = $min : $next = $curr + 1 ;
-	} else {
-		$curr = mt_rand($min,$max);
-		$prev = mt_rand($min,$max);
-		$next = mt_rand($min,$max);
-	}
+  if ($curr < 0) {$rnd = "yes";}
+  $curr - 1 < $min ? $prev = $max : $prev = $curr - 1 ;
+  $curr + 1 > $max ? $next = $min : $next = $curr + 1 ;
   $line = @file(__DIR__ . "/${dir}/data.${curr}", FILE_IGNORE_NEW_LINES);
   echo "<p id='original'>".$line[0]."</p>";
   echo "<hr>";
