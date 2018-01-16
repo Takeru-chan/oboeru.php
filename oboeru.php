@@ -18,8 +18,8 @@
 <?php
 $dir = $_GET["dir"];
 if ($dir != "") {
-  $max = $_GET["max"];
   $min = $_GET["min"];
+  $max = $_GET["max"];
   $curr = $_GET["curr"];
   $curr - 1 < $min ? $prev = $max : $prev = $curr - 1 ;
   $curr + 1 > $max ? $next = $min : $next = $curr + 1 ;
@@ -28,14 +28,14 @@ if ($dir != "") {
   echo "<hr>";
   echo "<p id='translate' ontouchstart=''>".$line[1]."</p>";
   echo "<hr>";
-  echo "<p id='prev'><a href='?dir=".$dir."&max=".$max."&min=".$min."&curr=".$prev."'>Prev</a></p>";
-  echo "<p id='next'><a href='?dir=".$dir."&max=".$max."&min=".$min."&curr=".$next."'>Next</a></p>";
+  echo "<p id='prev'><a href='?dir=".$dir."&min=".$min."&max=".$max."&curr=".$prev."'>Prev</a></p>";
+  echo "<p id='next'><a href='?dir=".$dir."&min=".$min."&max=".$max."&curr=".$next."'>Next</a></p>";
 } else {
   $line = @file(__DIR__ . "/oboeru.list", FILE_IGNORE_NEW_LINES);
   echo "<ul>";
   for ($i=0; $i<count($line); $i++) {
     $param = explode(",",$line[$i]);
-    echo "<li><a href='?dir=".$param[1]."&max=".$param[2]."&min=".$param[3]."&curr=".$param[4]."'>".$param[0]."</a></li>";
+    echo "<li><a href='?dir=".$param[1]."&min=".$param[2]."&max=".$param[3]."&curr=".$param[4]."'>".$param[0]."</a></li>";
   }
   echo "</ul>";
 }
