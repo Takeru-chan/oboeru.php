@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="ja"><head>
 <meta charset="utf-8">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=320px">
 <style>
-  body{text-align:center;font-size:64px;}
-  h1{font-size:96px;}
-  *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;}
+  body{text-align:center;font-size:18px;}
+  h1{font-size:20px;height:50px;line-height:50px}
+  *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;margin:0;padding:0;}
   ul{list-style:none;}
-  #original{height:5em;text-align:left;margin:0 1em;}
-  #translate{height:5em;color:#fff;text-align:left;margin:0 1em;}
+  #original{height:180px;text-align:left;margin:0 1em;}
+  #translate{height:180px;color:#fff;text-align:left;margin:0 1em;}
   #translate:active{color:#999;}
   #prev{float:left;margin-left:4em;}
   #next{float:right;margin-right:4em;}
