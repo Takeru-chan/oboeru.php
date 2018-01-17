@@ -7,6 +7,7 @@
   h1{font-size:20px;height:50px;line-height:50px}
   *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;margin:0;padding:0;}
   ul{list-style:none;}
+  li a{line-height:2em;}
   #original{height:180px;text-align:left;margin:0 1em;}
   #translate{height:180px;color:#fff;text-align:left;margin:0 1em;}
   #translate:active{color:#999;}
@@ -14,7 +15,7 @@
   #next{float:right;margin-right:4em;}
 </style>
 </head><body>
-<h1><a href='./oboeru.php'>おぼえるくん-α</a></h1>
+<h1><a href='./oboeru.php'>おぼえるくん-α</a></h1><hr>
 <?php
 $dir = $_GET["dir"];
 if ($dir != "") {
