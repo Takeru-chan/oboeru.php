@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=320px">
 <style>
-  body{text-align:center;font-size:18px;}
+  body{font-family:-apple-system;text-align:center;font-size:18px;}
   h1{font-size:20px;height:50px;line-height:50px}
   *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;margin:0;padding:0;}
   ul{list-style:none;}
