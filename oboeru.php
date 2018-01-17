@@ -20,9 +20,16 @@ $dir = $_GET["dir"];
 if ($dir != "") {
   $min = $_GET["min"];
   $max = $_GET["max"];
-  $curr = $_GET["curr"];
-  $curr - 1 < $min ? $prev = $max : $prev = $curr - 1 ;
-  $curr + 1 > $max ? $next = $min : $next = $curr + 1 ;
+  $rnd = $_GET["rnd"];
+  if($rnd < 0) {
+    $curr = mt_rand($min,$max);
+    $prev = mt_rand($min,$max);
+    $next = mt_rand($min,$max);
+  } else {
+    $curr = $_GET["curr"];
+    $curr - 1 < $min ? $prev = $max : $prev = $curr - 1 ;
+    $curr + 1 > $max ? $next = $min : $next = $curr + 1 ;
+  }
   $line = @file(__DIR__ . "/${dir}/data.${curr}", FILE_IGNORE_NEW_LINES);
   echo "<p id='original'>".$line[0]."</p>";
   echo "<hr>";
@@ -36,7 +43,7 @@ if ($dir != "") {
   for ($i=0; $i<count($line); $i++) {
     if(!preg_match('/^#/',$line[$i])) {
       $param = explode(",",$line[$i]);
-      echo "<li><a href='?dir=".$param[1]."&min=".$param[2]."&max=".$param[3]."&curr=".$param[4]."'>".$param[0]."</a></li>";
+      echo "<li><a href='?dir=".$param[1]."&min=".$param[2]."&max=".$param[3]."&rnd=".$param[4]."&curr=".$param[4]."'>".$param[0]."</a></li>";
     }
   }
   echo "</ul>";
