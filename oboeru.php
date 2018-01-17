@@ -34,8 +34,10 @@ if ($dir != "") {
   $line = @file(__DIR__ . "/oboeru.list", FILE_IGNORE_NEW_LINES);
   echo "<ul>";
   for ($i=0; $i<count($line); $i++) {
-    $param = explode(",",$line[$i]);
-    echo "<li><a href='?dir=".$param[1]."&min=".$param[2]."&max=".$param[3]."&curr=".$param[4]."'>".$param[0]."</a></li>";
+    if(!preg_match('/^#/',$line[$i])) {
+      $param = explode(",",$line[$i]);
+      echo "<li><a href='?dir=".$param[1]."&min=".$param[2]."&max=".$param[3]."&curr=".$param[4]."'>".$param[0]."</a></li>";
+    }
   }
   echo "</ul>";
 }
