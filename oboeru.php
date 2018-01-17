@@ -43,7 +43,7 @@ if ($dir != "") {
   echo "<p id='translate' ontouchstart='' ".$style.">".$line[1]."</p>";
   echo "<hr>";
   echo "<p id='prev'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$prev."&mode=".$mode."'>Prev</a></p>";
-  echo "<p id='next'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$prev."&mode=".$mode."'>Next</a></p>";
+  echo "<p id='next'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$next."&mode=".$mode."'>Next</a></p>";
 } else {
   $line = @file(__DIR__ . "/oboeru.list", FILE_IGNORE_NEW_LINES);
   echo "<ul>";
