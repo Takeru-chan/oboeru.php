@@ -84,3 +84,13 @@ data.9まで表示したら次の表示はdata.0に戻ります。
 
 This code has released under the MIT license.  
 [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT)
+
+## TODO list
+
+[ ] 階層メニュー対応
+[ ] 階層メニュー戻る経路
+[ ] データセット上限値の自動設定
+[ ] 初期表示値の自動設定
+[ ] 画像対応
+[ ] 再読み込みなし（DOM書き換え）
+[ ] データベース対応
