@@ -8,11 +8,14 @@
   *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;margin:0;padding:0;}
   ul{list-style:none;}
   li a{line-height:2em;}
+  .mainview{height:360px;overflow:scroll;}
+  .mainview p{margin:1em;}
   #original{height:180px;overflow:scroll;text-align:left;margin:0 1em;}
   #translate{height:180px;overflow:scroll;color:#fff;text-align:left;margin:0 1em;}
   #translate:active{color:#999;}
   #prev{float:left;margin-left:4em;}
   #next{float:right;margin-right:4em;}
+  #copyright{text-align:center;}
 </style>
 </head><body>
 <h1><a href='./oboeru.php'>おぼえるくん-α</a></h1><hr>
@@ -45,15 +48,22 @@ if ($dir != "") {
   echo "<p id='prev'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$prev."&mode=".$mode."'>Prev</a></p>";
   echo "<p id='next'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$next."&mode=".$mode."'>Next</a></p>";
 } else {
-  $line = @file(__DIR__ . "/oboeru.list", FILE_IGNORE_NEW_LINES);
-  echo "<ul>";
-  for ($i=0; $i<count($line); $i++) {
-    if(!preg_match('/^#/',$line[$i])) {
-      $param = explode(",",$line[$i]);
-      echo "<li><a href='?dir=".$param[1]."&min=".$param[2]."&max=".$param[3]."&rnd=".$param[4]."&curr=".$param[4]."&mode=".$param[5]."'>".$param[0]."</a></li>";
+  $mode = $_GET["mode"];
+  if($mode == 'credit') {
+    echo "<div class='mainview'><p>単語/短文帳 Webアプリ<br>Version α</p>";
+    echo "<p>License<br>This application has released under <a href='http://opensource.org/licenses/MIT'>the MIT license</a>.</p></div>";
+  } else {
+    $line = @file(__DIR__ . "/oboeru.list", FILE_IGNORE_NEW_LINES);
+    echo "<ul class='mainview'>";
+    for ($i=0; $i<count($line); $i++) {
+      if(!preg_match('/^#/',$line[$i])) {
+        $param = explode(",",$line[$i]);
+        echo "<li><a href='?dir=".$param[1]."&min=".$param[2]."&max=".$param[3]."&rnd=".$param[4]."&curr=".$param[4]."&mode=".$param[5]."'>".$param[0]."</a></li>";
+      }
     }
+    echo "</ul>";
   }
-  echo "</ul>";
+  echo "<p id='copyright'><a href='?mode=credit'>&copy;Takeru-chan, 2018</a></p>";
 }
 ?>
 </body></html>
