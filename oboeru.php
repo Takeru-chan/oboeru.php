@@ -8,8 +8,8 @@
   *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;margin:0;padding:0;}
   ul{list-style:none;}
   li a{line-height:2em;}
-  #original{height:180px;text-align:left;margin:0 1em;}
-  #translate{height:180px;color:#fff;text-align:left;margin:0 1em;}
+  #original{height:180px;overflow:scroll;text-align:left;margin:0 1em;}
+  #translate{height:180px;overflow:scroll;color:#fff;text-align:left;margin:0 1em;}
   #translate:active{color:#999;}
   #prev{float:left;margin-left:4em;}
   #next{float:right;margin-right:4em;}
