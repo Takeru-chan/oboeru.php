@@ -8,18 +8,19 @@
   *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;margin:0;padding:0;}
   ul{list-style:none;}
   li a{line-height:2em;}
-  .mainview{height:360px;overflow:scroll;}
+  .mainview{overflow:scroll;}
   .mainview p{margin:1em;}
-  #original{height:180px;overflow:scroll;text-align:left;margin:0 1em;}
-  #translate{height:180px;overflow:scroll;color:#fff;text-align:left;margin:0 1em;}
+  #original{overflow:scroll;text-align:left;margin:0 1em;}
+  #translate{overflow:scroll;color:#fff;text-align:left;margin:0 1em;}
   #translate:active{color:#999;}
   #prev{float:left;margin-left:4em;}
   #next{float:right;margin-right:4em;}
-  #copyright{text-align:center;}
 </style>
 </head><body>
 <h1><a href='./oboeru.php'>おぼえるくん-α</a></h1><hr>
 <?php
+$viewheight = 360; // メインビューの高さはここのみで指定。その他は自動計算
+$halfheight = $viewheight / 2;
 $dir = $_GET["dir"];
 if ($dir != "") {
   $min = $_GET["min"];
@@ -36,9 +37,9 @@ if ($dir != "") {
   }
   $mode = $_GET["mode"];
   if($mode == "letter") {
-    $style = "style='text-align:center;font-size:64px;line-height:180px'";
+    $style = "style='height:".$halfheight."px;text-align:center;font-size:64px;line-height:".$halfheight."px;'";
   } else {
-    $style = "";
+    $style = "style='height:".$halfheight."px;'";
   }
   $line = @file(__DIR__ . "/${dir}/data.${curr}", FILE_IGNORE_NEW_LINES);
   echo "<p id='original' ".$style.">".$line[0]."</p>";
@@ -50,11 +51,11 @@ if ($dir != "") {
 } else {
   $mode = $_GET["mode"];
   if($mode == 'credit') {
-    echo "<div class='mainview'><p>単語/短文帳 Webアプリ<br>Version α</p>";
+    echo "<div class='mainview' style='height:".$viewheight."px'><p>単語/短文帳 Webアプリ<br>Version α</p>";
     echo "<p>License<br>This application has released under <a href='http://opensource.org/licenses/MIT'>the MIT license</a>.</p></div>";
   } else {
     $line = @file(__DIR__ . "/oboeru.list", FILE_IGNORE_NEW_LINES);
-    echo "<ul class='mainview'>";
+    echo "<ul class='mainview' style='height:".$viewheight."px'>";
     for ($i=0; $i<count($line); $i++) {
       if(!preg_match('/^#/',$line[$i])) {
         $param = explode(",",$line[$i]);
