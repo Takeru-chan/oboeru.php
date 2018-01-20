@@ -34,7 +34,7 @@ if ($dir != "") {
     $prev = mt_rand($min,$max);
     $next = mt_rand($min,$max);
   } else {
-    $curr = $_GET["curr"];
+    $_GET["curr"] != "" ? $curr = $_GET["curr"] : $curr = $min;
     $curr - 1 < $min ? $prev = $max : $prev = $curr - 1 ;
     $curr + 1 > $max ? $next = $min : $next = $curr + 1 ;
   }
