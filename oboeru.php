@@ -13,8 +13,7 @@
   #original{overflow:scroll;text-align:left;margin:0 1em;}
   #translate{overflow:scroll;color:#fff;text-align:left;margin:0 1em;}
   #translate:active{color:#999;}
-  #prev{float:left;margin-left:4em;}
-  #next{float:right;margin-right:4em;}
+  #nav{height:100%;display:flex;justify-content:space-around;align-items:center;}
 </style>
 </head><body>
 <h1><a href='./oboeru.php'>おぼえるくん-α</a></h1><hr>
@@ -45,9 +44,6 @@ if ($dir != "") {
   echo "<p id='original' ".$style.">".$line[0]."</p>";
   echo "<hr>";
   echo "<p id='translate' ontouchstart='' ".$style.">".$line[1]."</p>";
-  echo "<hr>";
-  echo "<p id='prev'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$prev."&mode=".$mode."'>Prev</a></p>";
-  echo "<p id='next'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$next."&mode=".$mode."'>Next</a></p>";
 } else {
   $mode = $_GET["mode"];
   if($mode == 'credit') {
@@ -64,7 +60,15 @@ if ($dir != "") {
     }
     echo "</ul>";
   }
-  echo "<p id='copyright'><a href='?mode=credit'>&copy;Takeru-chan, 2018</a></p>";
 }
+echo "<hr><div id='nav'>";
+if ($dir != "") {
+  echo "<p><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$prev."&mode=".$mode."'>&#9664;</a></p>";
+}
+echo "<p><a href='?mode=credit'>&copy;Takeru-chan, 2018</a></p>";
+if ($dir != "") {
+  echo "<p><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$next."&mode=".$mode."'>&#9654;</a></p>";
+}
+echo "</div>";
 ?>
 </body></html>
