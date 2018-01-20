@@ -4,7 +4,8 @@
 <meta name="viewport" content="width=320px">
 <style>
   body{font-family:-apple-system;text-align:center;font-size:18px;}
-  h1{font-size:20px;height:50px;line-height:50px}
+  h1{font-size:20px;height:45px;line-height:45px}
+  h1 a,#nav a{text-decoration:none;}
   *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;margin:0;padding:0;}
   ul{list-style:none;}
   li a{line-height:2em;}
@@ -13,7 +14,7 @@
   #original{overflow:scroll;text-align:left;margin:0 1em;}
   #translate{overflow:scroll;color:#fff;text-align:left;margin:0 1em;}
   #translate:active{color:#999;}
-  #nav{height:100%;display:flex;justify-content:space-around;align-items:center;}
+  #nav{line-height:45px;display:flex;justify-content:space-around;align-items:center;}
 </style>
 </head><body>
 <h1><a href='./oboeru.php'>おぼえるくん-α</a></h1><hr>
