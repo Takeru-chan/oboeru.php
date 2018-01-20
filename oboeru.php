@@ -22,8 +22,12 @@ $viewheight = 360; // メインビューの高さはここのみで指定。そ�
 $halfheight = $viewheight / 2;
 $dir = $_GET["dir"];
 if ($dir != "") {
-  $min = $_GET["min"];
-  $max = $_GET["max"];
+  foreach(glob($dir."/data.*") as $file) {
+    $ext = explode('.',$file)[1];
+    if (is_numeric($ext)) {$result[] = $ext;}
+  }
+  $_GET["min"] != "" ? $min = $_GET["min"] : $min = min($result);
+  $_GET["max"] != "" ? $max = $_GET["max"] : $max = max($result);
   $rnd = $_GET["rnd"];
   if($rnd < 0) {
     $curr = mt_rand($min,$max);
