@@ -11,11 +11,10 @@ iPhoneのブラウザでアクセスします。
 
 メインメニュー画面で覚えたい単語や短文リストのリンクを選択します。  
 
-<img style="float:left; margin-right:1em; margin-bottom:1em;" src="./images/menu.png">
-<img src="./images/note.png">
+<img style="float:left; margin-right:1em; margin-bottom:1em;" src="./images/menu.png"><img src="./images/note.png">
 
-<div style="clear:both;">単語または短文表示画面の上半分に表示された内容に対応する内容が下半分に隠されています。
-下半分の内容はそのエリアをタッチしている間だけ表示されます。  </div>
+<div style="clear:both;">単語または短文表示画面の上半分に表示された内容に対応する内容が下半分に隠されています。</div>
+下半分の内容はそのエリアをタッチしている間だけ表示されます。  
 
 次の単語または短文を表示したいときは「&#9654;」、前の単語または短文を表示したいときは「&#9664;」ボタンを選択します。
 メインメニュー画面に戻るときはタイトルの「おぼえるくん-α」ボタンを選択します。  
@@ -36,6 +35,9 @@ phpが動作するWebサーバーのドキュメントルート以下にプロ�
         - data.1
         - ...
         - data.n
+        - n.m4a
+
+もしもデータディレクトリ内にdata.*と同じ番号のm4aファイルが存在する場合には、その音声を再生することができます。  
 
 ### データファイル
 

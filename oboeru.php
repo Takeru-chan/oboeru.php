@@ -53,7 +53,12 @@ if ($dir != "") {
   $line = @file(__DIR__ . "/${dir}/data.${curr}", FILE_IGNORE_NEW_LINES);
   echo "<p id='original'>".$line[0]."</p>";
   echo "<hr>";
-  echo "<p id='translate' ontouchstart=''>".$line[1]."</p>";
+	$audiofile = $dir."/".$curr.".m4a";
+	if (file_exists($audiofile)) {
+	  echo "<p id='translate' ontouchstart=''><audio src='".$audiofile."' controls></audio><br>".$line[1]."</p>";
+	} else {
+		echo "<p id='translate' ontouchstart=''>".$line[1]."</p>";
+	}
 } else {
   if($mode == 'credit') {
     echo "<div class='mainview'><p>単語/短文帳 Webアプリ<br>Version α</p>";
