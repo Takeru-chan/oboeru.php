@@ -11,8 +11,8 @@ iPhoneのブラウザでアクセスします。
 
 メインメニュー画面で覚えたい単語や短文リストのリンクを選択します。  
 
-<div style="float:left; margin-right:1em; margin-bottom:1em;">![](./images/menu.png)</div>
-![](./images/note.png)
+<img style="float:left; margin-right:1em; margin-bottom:1em;" src="./images/menu.png">
+<img src="./images/note.png">
 
 <div style="clear:both;">単語または短文表示画面の上半分に表示された内容に対応する内容が下半分に隠されています。
 下半分の内容はそのエリアをタッチしている間だけ表示されます。  </div>
@@ -41,7 +41,7 @@ phpが動作するWebサーバーのドキュメントルート以下にプロ�
 
 １ファイルあたり１画面分のデータです。１行目の内容が上半分に、２行目の内容が下半分に表示されます。  
 
-<div style="float:left; margin-right:1em; margin-bottom:1em;">![](./images/note.png)</div>
+<img style="float:left; margin-right:1em; margin-bottom:1em;" src="./images/note.png">
 
 ```
 Q.1 １パイントをSI単位で表すといくらか？
@@ -57,7 +57,7 @@ oboeru.list内にデータセットの名称とデータディレクトリ名、
 
 同一データディレクトリ内のデータに異なるデータセット名称を指定することもできるし、異なるデータディレクトリでデータセットを分けて管理することもできます。  
 
-<div style="float:left; margin-right:1em; margin-bottom:1em;">![](./images/menu.png)</div>
+<img style="float:left; margin-right:1em; margin-bottom:1em;" src="./images/menu.png">
 
 ```
 # データセット名,ディレクトリ名,最小値,最大値,初期表示値,表示モード
