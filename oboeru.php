@@ -2,26 +2,36 @@
 <html lang="ja"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=320px">
-<style>
-  body{font-family:-apple-system;text-align:center;font-size:18px;}
-  h1{font-size:20px;height:45px;line-height:45px}
-  h1 a,#nav a{text-decoration:none;}
-  *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;margin:0;padding:0;}
-  ul{list-style:none;}
-  li a{line-height:2em;}
-  .mainview{overflow:scroll;}
-  .mainview p{margin:1em;}
-  #original{overflow:scroll;text-align:left;margin:0 1em;}
-  #translate{overflow:scroll;color:#fff;text-align:left;margin:0 1em;}
-  #translate:active{color:#999;}
-  #nav{line-height:45px;display:flex;justify-content:space-around;align-items:center;}
-  .btn a{background:lightgray;border-radius:18px;padding:5px 9px;color:gray;text-shadow:1px 1px 0 white;}
-</style>
-</head><body>
-<h1 class='btn'><a href='./oboeru.php'>おぼえるくん-α</a></h1><hr>
 <?php
 $viewheight = 360; // メインビューの高さはここのみで指定。その他は自動計算
 $halfheight = $viewheight / 2;
+$mode = $_GET["mode"];
+if($mode == "letter") {
+  $lettermode = "text-align:center;font-size:64px;line-height:".$halfheight."px;";
+} else {
+  $lettermode = "";
+}
+$stylesheet = <<< EOM
+<style>
+  body{font-family:-apple-system;text-align:center;font-size:18px;}
+  h1{font-size:20px;height:45px;line-height:45px}
+  *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;margin:0;padding:0;}
+  ul{list-style:none;}
+  li a{line-height:2em;}
+  .mainview{overflow:scroll;height:{$viewheight}px;}
+  .mainview p{margin:1em;}
+  #original{overflow:scroll;text-align:left;margin:0 1em;height:{$halfheight}px;{$lettermode}}
+  #translate{overflow:scroll;color:#fff;text-align:left;margin:0 1em;height:{$halfheight}px;{$lettermode}}
+  #translate:active{color:#999;}
+  #nav{line-height:45px;display:flex;justify-content:space-around;align-items:center;}
+  .btn a{text-decoration:none;background:lightgray;border-radius:18px;padding:5px 9px;color:gray;text-shadow:1px 1px 0 white;}
+</style>
+EOM;
+echo $stylesheet;
+?>
+</head><body>
+<h1 class='btn'><a href='./oboeru.php'>おぼえるくん-α</a></h1><hr>
+<?php
 $dir = $_GET["dir"];
 if ($dir != "") {
   foreach(glob($dir."/data.*") as $file) {
@@ -40,24 +50,17 @@ if ($dir != "") {
     $curr - 1 < $min ? $prev = $max : $prev = $curr - 1 ;
     $curr + 1 > $max ? $next = $min : $next = $curr + 1 ;
   }
-  $mode = $_GET["mode"];
-  if($mode == "letter") {
-    $style = "style='height:".$halfheight."px;text-align:center;font-size:64px;line-height:".$halfheight."px;'";
-  } else {
-    $style = "style='height:".$halfheight."px;'";
-  }
   $line = @file(__DIR__ . "/${dir}/data.${curr}", FILE_IGNORE_NEW_LINES);
-  echo "<p id='original' ".$style.">".$line[0]."</p>";
+  echo "<p id='original'>".$line[0]."</p>";
   echo "<hr>";
-  echo "<p id='translate' ontouchstart='' ".$style.">".$line[1]."</p>";
+  echo "<p id='translate' ontouchstart=''>".$line[1]."</p>";
 } else {
-  $mode = $_GET["mode"];
   if($mode == 'credit') {
-    echo "<div class='mainview' style='height:".$viewheight."px'><p>単語/短文帳 Webアプリ<br>Version α</p>";
+    echo "<div class='mainview'><p>単語/短文帳 Webアプリ<br>Version α</p>";
     echo "<p>License<br>This application has released under <a href='http://opensource.org/licenses/MIT'>the MIT license</a>.</p></div>";
   } else {
     $line = @file(__DIR__ . "/oboeru.list", FILE_IGNORE_NEW_LINES);
-    echo "<ul class='mainview' style='height:".$viewheight."px'>";
+    echo "<ul class='mainview'>";
     for ($i=0; $i<count($line); $i++) {
       if(!preg_match('/^#/',$line[$i])) {
         $param = explode(",",$line[$i]);
