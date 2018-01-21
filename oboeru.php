@@ -1,9 +1,5 @@
-<!doctype html>
-<html lang="ja"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=320px">
 <?php
-$viewheight = 360; // メインビューの高さはここのみで指定。その他は自動計算
+$viewheight = 350; // メインビューの高さはここのみで指定。その他は自動計算
 $halfheight = $viewheight / 2;
 $mode = $_GET["mode"];
 if($mode == "letter") {
@@ -27,8 +23,12 @@ $stylesheet = <<< EOM
   .btn a{text-decoration:none;background:lightgray;border-radius:18px;padding:5px 9px;color:gray;text-shadow:1px 1px 0 white;}
 </style>
 EOM;
-echo $stylesheet;
 ?>
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=320px">
+<?php echo $stylesheet; ?>
 </head><body>
 <h1 class='btn'><a href='./oboeru.php'>おぼえるくん-α</a></h1><hr>
 <?php
