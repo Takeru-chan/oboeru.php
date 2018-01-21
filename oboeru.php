@@ -15,9 +15,10 @@
   #translate{overflow:scroll;color:#fff;text-align:left;margin:0 1em;}
   #translate:active{color:#999;}
   #nav{line-height:45px;display:flex;justify-content:space-around;align-items:center;}
+  .btn a{background:lightgray;border-radius:18px;padding:5px 9px;color:gray;text-shadow:1px 1px 0 white;}
 </style>
 </head><body>
-<h1><a href='./oboeru.php'>おぼえるくん-α</a></h1><hr>
+<h1 class='btn'><a href='./oboeru.php'>おぼえるくん-α</a></h1><hr>
 <?php
 $viewheight = 360; // メインビューの高さはここのみで指定。その他は自動計算
 $halfheight = $viewheight / 2;
@@ -68,11 +69,11 @@ if ($dir != "") {
 }
 echo "<hr><div id='nav'>";
 if ($dir != "") {
-  echo "<p><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$prev."&mode=".$mode."'>&#9664;</a></p>";
+  echo "<p class='btn'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$prev."&mode=".$mode."'>&#9664;</a></p>";
 }
 echo "<p><a href='?mode=credit'>&copy;Takeru-chan, 2018</a></p>";
 if ($dir != "") {
-  echo "<p><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$next."&mode=".$mode."'>&#9654;</a></p>";
+  echo "<p class='btn'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$next."&mode=".$mode."'>&#9654;</a></p>";
 }
 echo "</div>";
 ?>
