@@ -2,11 +2,7 @@
 $viewheight = 350; // メインビューの高さはここのみで指定。その他は自動計算
 $halfheight = $viewheight / 2;
 $mode = $_GET["mode"];
-if($mode == "letter") {
-  $lettermode = "text-align:center;font-size:64px;line-height:".$halfheight."px;";
-} else {
-  $lettermode = "";
-}
+$mode == "letter" ? $lettermode = "text-align:center;font-size:64px;line-height:".$halfheight."px;" : $lettermode = "";
 $stylesheet = <<< EOM
 <style>
   body{font-family:-apple-system;text-align:center;font-size:18px;}
@@ -51,8 +47,7 @@ if ($dir != "") {
     $curr + 1 > $max ? $next = $min : $next = $curr + 1 ;
   }
   $line = @file(__DIR__ . "/${dir}/data.${curr}", FILE_IGNORE_NEW_LINES);
-  echo "<p id='original'>".$line[0]."</p>";
-  echo "<hr>";
+  echo "<p id='original'>".$line[0]."</p><hr>";
   $audiofile = $dir."/".$curr.".m4a";
   if (file_exists($audiofile)) {
     $audiotag = "<audio src='".$audiofile."' controls></audio><br>";
@@ -76,12 +71,9 @@ if ($dir != "") {
 }
 echo "<hr><div id='nav'>";
 if ($dir != "") {
-  echo "<p class='btn'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$prev."&mode=".$mode."'>&#9664;</a></p>";
+  $prevbtn = "<p class='btn'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$prev."&mode=".$mode."'>&#9664;</a></p>";
+  $nextbtn = "<p class='btn'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$next."&mode=".$mode."'>&#9654;</a></p>";
 }
-echo "<p><a href='?mode=credit'>&copy;Takeru-chan, 2018</a></p>";
-if ($dir != "") {
-  echo "<p class='btn'><a href='?dir=".$dir."&min=".$min."&max=".$max."&rnd=".$rnd."&curr=".$next."&mode=".$mode."'>&#9654;</a></p>";
-}
-echo "</div>";
+echo $prevbtn."<p><a href='?mode=credit'>&copy;Takeru-chan, 2018</a></p>".$nextbtn."</div>";
 ?>
 </body></html>
