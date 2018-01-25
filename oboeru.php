@@ -5,7 +5,7 @@ $mode = $_GET["mode"];
 $lettermode = $mode == "letter" ? "text-align:center;font-size:64px;line-height:".$halfheight."px;" : "";
 $stylesheet = <<< EOM
 <style>
-  body{font-family:-apple-system;text-align:center;font-size:18px;}
+  body{font-family:-apple-system;text-align:center;font-size:18px;width:320px;margin:auto;}
   h1{font-size:20px;height:45px;line-height:45px}
   *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;margin:0;padding:0;}
   ul{list-style:none;}
