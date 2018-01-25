@@ -2,7 +2,7 @@
 $viewheight = 350; // メインビューの高さはここのみで指定。その他は自動計算
 $halfheight = $viewheight / 2;
 $mode = $_GET["mode"];
-$mode == "letter" ? $lettermode = "text-align:center;font-size:64px;line-height:".$halfheight."px;" : $lettermode = "";
+$lettermode = $mode == "letter" ? "text-align:center;font-size:64px;line-height:".$halfheight."px;" : "";
 $stylesheet = <<< EOM
 <style>
   body{font-family:-apple-system;text-align:center;font-size:18px;}
@@ -34,17 +34,17 @@ if ($dir != "") {
     $ext = explode('.',$file)[1];
     if (is_numeric($ext)) {$result[] = $ext;}
   }
-  $_GET["min"] != "" ? $min = $_GET["min"] : $min = min($result);
-  $_GET["max"] != "" ? $max = $_GET["max"] : $max = max($result);
+  $min = $_GET["min"] != "" ? $_GET["min"] : min($result);
+  $max = $_GET["max"] != "" ? $_GET["max"] : max($result);
   $rnd = $_GET["rnd"];
   if($rnd < 0) {
     $curr = mt_rand($min,$max);
     $prev = mt_rand($min,$max);
     $next = mt_rand($min,$max);
   } else {
-    $_GET["curr"] != "" ? $curr = $_GET["curr"] : $curr = $min;
-    $curr - 1 < $min ? $prev = $max : $prev = $curr - 1 ;
-    $curr + 1 > $max ? $next = $min : $next = $curr + 1 ;
+    $curr = $_GET["curr"] != "" ? $_GET["curr"] : $min;
+    $prev = $curr - 1 < $min ? $max : $curr - 1 ;
+    $next = $curr + 1 > $max ? $min : $curr + 1 ;
   }
   $line = @file(__DIR__ . "/${dir}/data.${curr}", FILE_IGNORE_NEW_LINES);
   echo "<p id='original'>".$line[0]."</p><hr>";
